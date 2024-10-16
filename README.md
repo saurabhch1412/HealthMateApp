@@ -100,3 +100,7 @@ Questions for Feedback:
 •	Privacy Concerns: What are users’ main concerns regarding data privacy?
 •	Engagement Strategies: What motivates users to consistently use health apps?
 •	Performance Benchmarks: What are acceptable performance metrics for real-time data processing?
+
+
+<img width="784" alt="image" src="https://github.com/user-attachments/assets/6e0479ed-7e83-4aca-a7d4-7b66fafe3e37">
+
