@@ -1,0 +1,69 @@
+public class HealthData {
+    private int id;
+    private String date;
+    private int steps;
+    private float weight;
+
+    // Constructors, getters, and setters
+}
+public class DatabaseHelper extends SQLiteOpenHelper {
+    private static final String DATABASE_NAME = "healthmate.db";
+    private static final int DATABASE_VERSION = 1;
+
+    private static final String TABLE_HEALTH = "health_data";
+    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_DATE = "date";
+    private static final String COLUMN_STEPS = "steps";
+    private static final String COLUMN_WEIGHT = "weight";
+
+    private static final String TABLE_CREATE =
+            "CREATE TABLE " + TABLE_HEALTH + " (" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COLUMN_DATE + " TEXT, " +
+            COLUMN_STEPS + " INTEGER, " +
+            COLUMN_WEIGHT + " REAL);";
+
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL(TABLE_CREATE);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HEALTH);
+        onCreate(db);
+    }
+}
+public void addHealthData(HealthData data) {
+    SQLiteDatabase db = this.getWritableDatabase();
+    ContentValues values = new ContentValues();
+    values.put(COLUMN_DATE, data.getDate());
+    values.put(COLUMN_STEPS, data.getSteps());
+    values.put(COLUMN_WEIGHT, data.getWeight());
+    db.insert(TABLE_HEALTH, null, values);
+    db.close();
+}
+public List<HealthData> getAllHealthData() {
+    List<HealthData> healthDataList = new ArrayList<>();
+    SQLiteDatabase db = this.getReadableDatabase();
+    Cursor cursor = db.query(TABLE_HEALTH, null, null, null, null, null, null);
+
+    if (cursor.moveToFirst()) {
+        do {
+            HealthData data = new HealthData();
+            data.setId(cursor.getInt(cursor.getColumnIndex(COLUMN_ID)));
+            data.setDate(cursor.getString(cursor.getColumnIndex(COLUMN_DATE)));
+            data.setSteps(cursor.getInt(cursor.getColumnIndex(COLUMN_STEPS)));
+            data.setWeight(cursor.getFloat(cursor.getColumnIndex(COLUMN_WEIGHT)));
+            healthDataList.add(data);
+        } while (cursor.moveToNext());
+    }
+
+    cursor.close();
+    db.close();
+    return healthDataList;
+}
