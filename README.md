@@ -102,5 +102,33 @@ Questions for Feedback:
 •	Performance Benchmarks: What are acceptable performance metrics for real-time data processing?
 
 
+## Project Overview
+Healthmate is a health companion app designed to help users manage their health and wellness. The app includes features such as profile management, settings customization, and data storage for user preferences.
+
+## Project Plan
+### Milestones
+1. **Prototype Development** (Current Phase)
+   - Implement basic navigation and event-based actions.
+   - Integrate data storage and retrieval.
+   - Design a basic UI/UX to demonstrate expected behavior.
+
+2. **Beta Release**
+   - Expand functionality with additional features.
+   - Conduct user testing and gather feedback.
+   - Refine UI/UX based on user feedback.
+
+3. **Final Release**
+   - Implement final features and improvements.
+   - Perform extensive testing and bug fixing.
+   - Launch the app to the public.
+
+### Features Implemented in Prototype
+- **Navigation and Event-Based Actions**: Added navigation between Home, Profile, and Settings screens. Implemented button click events for form submissions.
+- **Storing/Retrieving Data**: Integrated local storage to save user preferences and retrieve them on app load.
+- **Basic UI/UX**: Designed a basic user interface with sample data to demonstrate the expected behavior of the app.
+
+
+
+
 <img width="784" alt="image" src="https://github.com/user-attachments/assets/6e0479ed-7e83-4aca-a7d4-7b66fafe3e37">
 
